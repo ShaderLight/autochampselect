@@ -9,6 +9,8 @@ from cv2 import log
 SELECTION = {}
 
 def rendergui():
+    global window
+
     window = tk.Tk()
     window.geometry('500x300')
     options = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
@@ -18,6 +20,7 @@ def rendergui():
     
     global pickbox
     global banbox
+    global bancheck
 
     pickbox = ttk.Combobox(window, textvariable=picktext)
     pickbox['values'] = options
@@ -39,10 +42,10 @@ def rendergui():
     bancheck.select()
     bancheck.pack()
 
-    start_btn = tk.Button(window, text='Start')
+    start_btn = tk.Button(window, text='Start', command=start)
     start_btn.pack(fill='x', padx=5, pady=5)
 
-    quit_btn = tk.Button(window, text='Quit')
+    quit_btn = tk.Button(window, text='Quit', command=quit)
     quit_btn.pack(fill='x', padx=5, pady=5)
     
     window.mainloop()
@@ -65,7 +68,10 @@ def bancheck_changed():
         logging.debug('Banbox enabled')
     
 def start():
-    pass
+    banbox.configure(state='disabled')
+    pickbox.configure(state='disabled')
+    bancheck.configure(state='disabled')
 
 def quit():
-    pass
+    window.destroy()
+    raise KeyboardInterrupt
