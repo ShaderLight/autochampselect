@@ -1,5 +1,7 @@
 from pyautogui import locateCenterOnScreen, click, ImageNotFoundException
 from modules.isrunning import isrunning
+import logging
+from time import sleep
 
 def pre_match_loop():
     while isrunning('LeagueClientUx.exe'):

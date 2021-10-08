@@ -1,6 +1,3 @@
-from modules.isrunning import isrunning
-from time import sleep
-from modules.input import accept_match
 import logging
 from modules.gui import rendergui
 
