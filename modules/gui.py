@@ -3,6 +3,8 @@ import logging
 import tkinter as tk
 import tkinter.ttk as ttk
 
+from cv2 import log
+
 
 SELECTION = {}
 
@@ -29,6 +31,20 @@ def rendergui():
     banbox.pack(fill='x', padx=5, pady=5)
     banbox.bind('<<ComboboxSelected>>', banbox_changed)
 
+    global with_ban_phase
+    with_ban_phase = tk.BooleanVar()
+    with_ban_phase.set(1)
+    bancheck = tk.Checkbutton(window, text="Ban phase?", variable=with_ban_phase, offvalue=False, onvalue=True, command=bancheck_changed)
+    bancheck.pack(fill='x', padx=5, pady=5)
+    bancheck.select()
+    bancheck.pack()
+
+    start_btn = tk.Button(window, text='Start')
+    start_btn.pack(fill='x', padx=5, pady=5)
+
+    quit_btn = tk.Button(window, text='Quit')
+    quit_btn.pack(fill='x', padx=5, pady=5)
+    
     window.mainloop()
 
 def pickbox_changed(event):
@@ -38,3 +54,18 @@ def pickbox_changed(event):
 def banbox_changed(event):
     logging.debug('Banbox: {}'.format(banbox.get()))
     SELECTION['ban'] = banbox.get()
+
+def bancheck_changed():
+    logging.debug('Bancheck pressed, value: {}'.format(with_ban_phase.get()))
+    if not with_ban_phase.get():
+        banbox.configure(state='disabled')
+        logging.debug('Banbox disabled')
+    else:
+        banbox.configure(state='enabled')
+        logging.debug('Banbox enabled')
+    
+def start():
+    pass
+
+def quit():
+    pass
