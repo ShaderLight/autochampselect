@@ -1,13 +1,16 @@
 from pyautogui import locateCenterOnScreen, click, ImageNotFoundException
-from modules.isrunning import isrunning
+from .isrunning import isrunning
 import logging
 from time import sleep
 
-def pre_match_loop():
+def pre_match_loop(window):
     while isrunning('LeagueClientUx.exe'):
+        window.update()
         if accept_match() == -1:
             logging.debug('Match accepting failed, retrying...')
-            sleep(3)
+            for i in range(6):
+                window.update()
+                sleep(0.5)
             continue
         else:
             logging.debug('Match accepted!')

@@ -5,6 +5,8 @@ import tkinter.ttk as ttk
 
 from cv2 import log
 
+from .input import pre_match_loop
+
 
 SELECTION = {}
 
@@ -21,6 +23,7 @@ def rendergui():
     global pickbox
     global banbox
     global bancheck
+    global start_btn
 
     pickbox = ttk.Combobox(window, textvariable=picktext)
     pickbox['values'] = options
@@ -50,13 +53,16 @@ def rendergui():
     
     window.mainloop()
 
+
 def pickbox_changed(event):
     logging.debug('Pickbox: {}'.format(pickbox.get()))
     SELECTION['pick'] = pickbox.get()
 
+
 def banbox_changed(event):
     logging.debug('Banbox: {}'.format(banbox.get()))
     SELECTION['ban'] = banbox.get()
+
 
 def bancheck_changed():
     logging.debug('Bancheck pressed, value: {}'.format(with_ban_phase.get()))
@@ -66,11 +72,15 @@ def bancheck_changed():
     else:
         banbox.configure(state='enabled')
         logging.debug('Banbox enabled')
-    
+
+
 def start():
     banbox.configure(state='disabled')
     pickbox.configure(state='disabled')
     bancheck.configure(state='disabled')
+    start_btn.configure(state='disabled')
+    return pre_match_loop(window)
+
 
 def quit():
     window.destroy()
