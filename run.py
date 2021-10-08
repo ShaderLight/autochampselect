@@ -1,18 +1,16 @@
-import pyautogui
-from pyscreeze import ImageNotFoundException
 from modules.isrunning import isrunning
 from time import sleep
+from modules.input import accept_match
+import logging
+from modules.gui import rendergui
 
-while True:
-    try:
-        acceptxy = pyautogui.locateOnScreen('buttons/accept.png', confidence = 0.5)
-        if acceptxy == None:
-            sleep(1)
-            continue
+logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%d/%m/%Y %H:%M:%S', level=logging.DEBUG)
 
-    except ImageNotFoundException:
-        sleep(1)
+
+while False:
+    if accept_match() == -1:
+        logging.debug('Match accepting failed, retrying...')
+        sleep(3)
         continue
 
-    pyautogui.click(acceptxy[0], acceptxy[1])
-    break
+rendergui()
