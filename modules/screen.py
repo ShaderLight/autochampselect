@@ -1,6 +1,7 @@
-import pyautogui
+from cv2 import getWindowImageRect
+from pyautogui import getWindowsWithTitle
 
 def getlolwindow():
-    win = pyautogui.getWindowsWithTitle('League of Legends')[0]
+    win = getWindowsWithTitle('League of Legends')[0]
 
     return win
