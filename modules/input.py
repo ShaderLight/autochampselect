@@ -49,6 +49,7 @@ def ban_loop(window, with_ban_phase, selection):
         
         win = getlolwindow()
         searchbox_input(win, selection['ban'])
+        selectchamp(win)
         logging.debug('Clicking ban button')
         click_ban()
         break
@@ -82,6 +83,7 @@ def pick_loop(window, with_ban_phase, selection):
 
         win = getlolwindow()
         searchbox_input(win, selection['pick'])
+        selectchamp(win)
         logging.debug('Clicking pick button')
         click_pick()
         break
