@@ -107,7 +107,7 @@ def searchbox_input(win, text):
     champ_x = win.size.width * SELECT_X_RATIO
     champ_y = win.size.height * SELECT_Y_RATIO
 
-    win.clickRel(x=champ_x, y=champ_y)
+    click(win.left + champ_x, win.top + champ_y)
     write(text, interval=0.1)
 
     return 0
@@ -147,6 +147,6 @@ def selectchamp(win):
     champ_x = win.size.width * SELECT_X_RATIO
     champ_y = win.size.height * SELECT_Y_RATIO
 
-    win.clickRel(x=champ_x, y=champ_y)
+    click(win.left + champ_x, win.top + champ_y)
 
     return 0
