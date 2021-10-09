@@ -90,11 +90,6 @@ def pick_loop(window, with_ban_phase, selection):
         return pick_loop(window, with_ban_phase, selection)
 
 
-def lockin_loop(window):
-    window.update()
-    locateCenterOnScreen('buttons/lockin.png', confidence = 0.7)
-
-
 def accept_match():
     try:
         acceptxy = locateCenterOnScreen('buttons/accept.png', confidence = 0.7)
