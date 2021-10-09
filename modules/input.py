@@ -31,6 +31,7 @@ def pre_match_loop(window, with_ban_phase, selection):
 
 
 def ban_loop(window, with_ban_phase, selection):
+    DODGE_FLAG = False
     while isrunning('LeagueClientUx.exe'):
         window.update()
         if accept_match() == 0:
@@ -60,6 +61,7 @@ def ban_loop(window, with_ban_phase, selection):
 
 
 def pick_loop(window, with_ban_phase, selection):
+    DODGE_FLAG = False
     while isrunning('LeagueClientUx.exe'):
         window.update()
         if accept_match() == 0:
@@ -104,8 +106,8 @@ def accept_match():
 
 
 def searchbox_input(win, text):
-    champ_x = win.size.width * SELECT_X_RATIO
-    champ_y = win.size.height * SELECT_Y_RATIO
+    champ_x = win.size.width * SEARCH_X_RATIO
+    champ_y = win.size.height * SEARCH_Y_RATIO
 
     click(win.left + champ_x, win.top + champ_y)
     write(text, interval=0.1)
