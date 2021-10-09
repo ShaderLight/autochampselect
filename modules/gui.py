@@ -83,5 +83,6 @@ def start():
 
 
 def quit():
+    logging.debug('Quitting...')
     window.destroy()
     raise KeyboardInterrupt

@@ -31,6 +31,7 @@ def pre_match_loop(window, with_ban_phase, selection):
 
 
 def ban_loop(window, with_ban_phase, selection):
+    logging.debug('Entering ban loop')
     DODGE_FLAG = False
     while isrunning('LeagueClientUx.exe'):
         window.update()
@@ -45,9 +46,10 @@ def ban_loop(window, with_ban_phase, selection):
         if banxy == None:
             sleep(1)
             continue
-
+        
         win = getlolwindow()
         searchbox_input(win, selection['ban'])
+        logging.debug('Clicking ban button')
         click_ban()
         break
 
@@ -61,6 +63,7 @@ def ban_loop(window, with_ban_phase, selection):
 
 
 def pick_loop(window, with_ban_phase, selection):
+    logging.debug('Entering pick loop')
     DODGE_FLAG = False
     while isrunning('LeagueClientUx.exe'):
         window.update()
@@ -79,6 +82,7 @@ def pick_loop(window, with_ban_phase, selection):
 
         win = getlolwindow()
         searchbox_input(win, selection['pick'])
+        logging.debug('Clicking pick button')
         click_pick()
         break
 
@@ -109,6 +113,7 @@ def searchbox_input(win, text):
     champ_x = win.size.width * SEARCH_X_RATIO
     champ_y = win.size.height * SEARCH_Y_RATIO
 
+    logging.debug('Inputting: {}'.format(text))
     click(win.left + champ_x, win.top + champ_y)
     write(text, interval=0.1)
 
