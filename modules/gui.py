@@ -79,7 +79,7 @@ def start():
     pickbox.configure(state='disabled')
     bancheck.configure(state='disabled')
     start_btn.configure(state='disabled')
-    return pre_match_loop(window)
+    return pre_match_loop(window, with_ban_phase, SELECTION)
 
 
 def quit():
