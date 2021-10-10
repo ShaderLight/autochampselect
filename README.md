@@ -7,6 +7,7 @@ This app uses computer vision to click stuff and does not interfere with the gam
 # Requirements
 - pyautogui
 - opencv-python
+- requests
 # How does it work
 1. Execute run.py
 2. choose champions by using gui
