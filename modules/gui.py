@@ -15,6 +15,7 @@ def rendergui():
 
     window = tk.Tk()
     window.geometry('500x300')
+    window.title('AutoChampSelect')
     options = ['Corki', 'Ivern']
 
     picktext = tk.StringVar(value='Pick')
