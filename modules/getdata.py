@@ -10,5 +10,3 @@ def get_champ_list():
         output.append(value['name'])
 
     return output
-
-print(get_champ_list())
