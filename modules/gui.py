@@ -6,7 +6,7 @@ import tkinter.ttk as ttk
 from cv2 import log
 
 from .input import pre_match_loop, selectchamp, getlolwindow
-
+from .getdata import get_champ_list
 
 SELECTION = {}
 
@@ -16,7 +16,7 @@ def rendergui():
     window = tk.Tk()
     window.geometry('500x300')
     window.title('AutoChampSelect')
-    options = ['Corki', 'Ivern']
+    options = get_champ_list()
 
     picktext = tk.StringVar(value='Pick')
     bantext = tk.StringVar(value='Ban')
